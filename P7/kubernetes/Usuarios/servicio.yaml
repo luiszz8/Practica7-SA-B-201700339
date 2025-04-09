@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-usuarios
+  namespace: sa-p5
+spec:
+  selector:
+    app: usuarios
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30001  
+  type: NodePort

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-gateways
+  namespace: sa-p5
+spec:
+  selector:
+    app: gateways
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 30005  
+  type: NodePort

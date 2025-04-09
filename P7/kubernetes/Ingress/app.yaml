@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sa-p5-ingress
+  namespace: sa-p5
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /users
+            pathType: Prefix
+            backend:
+              service:
+                name: nodeport-usuarios
+                port:
+                  number: 3000
+          - path: /graphql
+            pathType: Prefix
+            backend:
+              service:
+                name: nodeport-productos
+                port:
+                  number: 3001
+          - path: /graphql-metodos
+            pathType: Prefix
+            backend:
+              service:
+                name: nodeport-metodos
+                port:
+                  number: 3002
+          - path: /compras
+            pathType: Prefix
+            backend:
+              service:
+                name: nodeport-compras
+                port:
+                  number: 3003

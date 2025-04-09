@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuarios
+  namespace: sa-p5
+  labels:
+    app: usuarios
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuarios
+  template:
+    metadata:
+      labels:
+        app: usuarios
+    spec:
+      containers:
+      - name: usuarios
+        image: luizz8/usuarios
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        envFrom:
+          - secretRef:
+              name: my-secret
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: usuarios-hpa
+  namespace: sa-p5
+spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: usuarios
+    minReplicas: 1
+    maxReplicas: 2
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80

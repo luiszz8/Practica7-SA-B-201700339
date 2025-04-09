@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-productos
+  namespace: sa-p5
+spec:
+  selector:
+    app: productos
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
+      nodePort: 30002  
+  type: NodePort

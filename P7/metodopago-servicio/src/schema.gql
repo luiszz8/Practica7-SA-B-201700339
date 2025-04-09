@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Metodo {
+  id: String!
+  numero: String!
+  cliente: String!
+}
+
+type Query {
+  metodos: [Metodo!]!
+}
+
+type Mutation {
+  crearMetodo(MetodoInput: CreateMetodoInput!): Metodo!
+}
+
+input CreateMetodoInput {
+  numero: String!
+  cliente: String!
+}
