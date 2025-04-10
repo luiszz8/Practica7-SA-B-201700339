@@ -3,9 +3,14 @@ kind: Ingress
 metadata:
   name: sa-p5-ingress
   namespace: sa-p5
+  labels:
+    app: sa-p5
   annotations:
-    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
 spec:
+  ingressClassName: nginx
   rules:
     - http:
         paths:
