@@ -30,7 +30,7 @@ pipeline {
     // MÉTODO
     stage('Build & Deploy metodo-servicio') {
       steps {
-        dir('metodo-servicio') {
+        dir('metodopago-servicio') {
           withCredentials([usernamePassword(credentialsId: 'luis-dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             sh """
               docker build -t metodosp7 .
