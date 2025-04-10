@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: productos
-        image: luizz8/productosp6
+        image: luizz8/productosp7
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

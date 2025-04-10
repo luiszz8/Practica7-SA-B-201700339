@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: usuarios
-        image: luizz8/usuarios
+        image: luizz8/usuariosp7
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

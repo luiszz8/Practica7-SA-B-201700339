@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: compras
-        image: luizz8/comprasp6
+        image: luizz8/comprasp7
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
